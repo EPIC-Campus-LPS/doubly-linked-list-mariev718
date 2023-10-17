@@ -28,7 +28,7 @@ public class DoublyLinkedList<E> {
 
         if(index > size) {
 
-            //throw error
+            throw new IndexOutOfBoundsException();
 
         } else if(index == 0) {
 
@@ -74,9 +74,9 @@ public class DoublyLinkedList<E> {
 
     public E remove(int index) {
 
-        if(index > size) {
+        if(index >= size) {
 
-            //throw error
+            throw new IndexOutOfBoundsException();
 
         } if (index == 0) {
 
@@ -135,11 +135,50 @@ public class DoublyLinkedList<E> {
 
     public E set(int index, E element) {
 
-        for(int i = 0; i < index; i++) {
+        if(index >= size) {
 
-
+            throw new IndexOutOfBoundsException();
 
         }
+
+        Node<E> current = headNode;
+
+        for(int i = 0; i < index; i++) {
+
+            current = current.getNextNode();
+
+        }
+
+        E temp = current.getValue();
+        current.setValue(element);
+
+        return temp;
+
+    }
+
+    public String toString() {
+
+        if(size == 0) {
+
+            return "List is Empty";
+
+        }
+
+        Node<E> current = headNode;
+        String list = "[";
+
+        while(current.getNextNode() != null) {
+
+            list += (String) current.getValue();
+            list += ", ";
+            current = current.getNextNode();
+
+        }
+
+        list += (String) current.getValue();
+        list += "]";
+
+        return list;
 
     }
 
