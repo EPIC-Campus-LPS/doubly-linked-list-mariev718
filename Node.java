@@ -2,8 +2,8 @@ public class Node<E> {
 
     // PIVs
     private E value;
-    private Node<E> next;
-    private Node<E> previous;
+    private Node<E> next = null;
+    private Node<E> previous = null;
 
 
     // constructors

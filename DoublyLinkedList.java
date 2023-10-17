@@ -16,6 +16,7 @@ public class DoublyLinkedList<E> {
             Node<E> current = new Node(element);
             current.setPreviousNode(tailNode);
             tailNode = current;
+            current.getPreviousNode().setNextNode(tailNode);
 
         }
 
@@ -39,6 +40,7 @@ public class DoublyLinkedList<E> {
             } else {
 
                 headNode = new Node(element, headNode);
+                headNode.getNextNode().setPreviousNode(headNode);
 
             }
 
@@ -47,6 +49,7 @@ public class DoublyLinkedList<E> {
             Node<E> current = new Node(element);
             current.setPreviousNode(tailNode);
             tailNode = current;
+            tailNode.getPreviousNode().setNextNode(tailNode);
 
         } else {
 
@@ -59,8 +62,82 @@ public class DoublyLinkedList<E> {
 
             }
 
-            newNode.setNexNode
+            newNode.setNextNode(current.getNextNode());
+            newNode.setPreviousNode(current);
             current.setNextNode(newNode);
+
+        }
+
+        size++;
+
+    }
+
+    public E remove(int index) {
+
+        if(index > size) {
+
+            //throw error
+
+        } if (index == 0) {
+
+            Node<E> temp = headNode;
+            headNode = headNode.getNextNode();
+            headNode.setPreviousNode(null);
+
+            size--;
+
+            return temp.getValue();
+
+        } else if(index == size - 1) {
+
+            Node<E> temp = tailNode;
+            tailNode = tailNode.getPreviousNode();
+            tailNode.setNextNode(null);
+
+            size--;
+
+            return temp.getValue();
+
+        } else {
+
+            Node<E> current = headNode;
+
+            for(int i = 0; i < index; i++) {
+
+                current = current.getNextNode();
+
+            }
+
+            Node<E> temp = current.getNextNode();
+            current.setNextNode(current.getNextNode().getNextNode());
+            current = current.getNextNode();
+            current.setPreviousNode(current.getPreviousNode().getPreviousNode());
+
+            size--;
+
+            return temp.getValue();
+
+        }
+
+    }
+
+    public E remove() {
+
+        Node<E> temp = tailNode;
+        tailNode = tailNode.getPreviousNode();
+        tailNode.setNextNode(null);
+
+        size--;
+
+        return temp.getValue();
+
+    }
+
+    public E set(int index, E element) {
+
+        for(int i = 0; i < index; i++) {
+
+
 
         }
 
