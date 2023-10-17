@@ -4,6 +4,26 @@ public class DoublyLinkedList<E> {
     private Node<E> headNode;
     private Node<E> tailNode;
 
+    public E get(int index) {
+
+        if(index >= size) {
+
+            throw new IndexOutOfBoundsException();
+
+        }
+
+        Node<E> current = headNode;
+
+        for(int i = 0; i < index; i++) {
+
+            current = current.getNextNode();
+
+        }
+
+        return current.getNextNode().getValue();
+
+    }
+
     public void add(E element) {
 
         if(size == 0) {
@@ -181,5 +201,8 @@ public class DoublyLinkedList<E> {
         return list;
 
     }
+
+    // add size method
+    // add is empty method
 
 }
