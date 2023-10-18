@@ -110,11 +110,15 @@ class DoublyLinkedListTest {
     void testRemove() {
 
         DoublyLinkedList<String> test4 = new DoublyLinkedList<>();
+
+        assertThrows(IndexOutOfBoundsException.class, () -> test4.remove());
+
         test4.add("ab");
         test4.add("cd");
         test4.add("ef");
 
-
+        assertEquals(test4.get(2), test4.remove());
+        assertEquals("ab", test4.getNode(1).getPreviousNode().getValue());
 
     }
 

@@ -162,6 +162,12 @@ public class DoublyLinkedList<E> {
 
     public E remove() {
 
+        if(size == 0) {
+
+            throw new IndexOutOfBoundsException();
+
+        }
+
         Node<E> temp = tailNode;
         tailNode = tailNode.getPreviousNode();
         tailNode.setNextNode(null);
