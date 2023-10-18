@@ -6,7 +6,7 @@ public class DoublyLinkedList<E> {
 
     public E get(int index) {
 
-        if(index >= size) {
+        if (index >= size) {
 
             throw new IndexOutOfBoundsException();
 
@@ -14,19 +14,39 @@ public class DoublyLinkedList<E> {
 
         Node<E> current = headNode;
 
-        for(int i = 0; i < index; i++) {
+        for (int i = 0; i < index; i++) {
 
             current = current.getNextNode();
 
         }
 
-        return current.getNextNode().getValue();
+        return current.getValue();
+
+    }
+
+    public Node<E> getNode(int index) {
+
+        Node<E> current = headNode;
+
+        for (int i = 0; i < index; i++) {
+
+            current = current.getNextNode();
+
+        }
+
+        return current;
+
+    }
+
+    public int getSize() {
+
+        return size;
 
     }
 
     public void add(E element) {
 
-        if(size == 0) {
+        if (size == 0) {
 
             headNode = new Node(element);
             tailNode = headNode;
@@ -46,13 +66,13 @@ public class DoublyLinkedList<E> {
 
     public void add(int index, E element) {
 
-        if(index > size) {
+        if (index > size) {
 
             throw new IndexOutOfBoundsException();
 
-        } else if(index == 0) {
+        } else if (index == 0) {
 
-            if(size == 0) {
+            if (size == 0) {
 
                 headNode = new Node(element);
                 tailNode = headNode;
@@ -64,7 +84,7 @@ public class DoublyLinkedList<E> {
 
             }
 
-        } else if(index == size) {
+        } else if (index == size) {
 
             Node<E> current = new Node(element);
             current.setPreviousNode(tailNode);
@@ -76,7 +96,7 @@ public class DoublyLinkedList<E> {
             Node<E> newNode = new Node(element);
             Node<E> current = headNode;
 
-            for(int i = 0; i < index; i++) {
+            for (int i = 0; i < index; i++) {
 
                 current = current.getNextNode();
 
@@ -94,11 +114,11 @@ public class DoublyLinkedList<E> {
 
     public E remove(int index) {
 
-        if(index >= size) {
+        if (index >= size) {
 
             throw new IndexOutOfBoundsException();
 
-        } if (index == 0) {
+        } else if (index == 0) {
 
             Node<E> temp = headNode;
             headNode = headNode.getNextNode();
@@ -108,7 +128,7 @@ public class DoublyLinkedList<E> {
 
             return temp.getValue();
 
-        } else if(index == size - 1) {
+        } else if (index == size - 1) {
 
             Node<E> temp = tailNode;
             tailNode = tailNode.getPreviousNode();
@@ -122,20 +142,19 @@ public class DoublyLinkedList<E> {
 
             Node<E> current = headNode;
 
-            for(int i = 0; i < index; i++) {
+            for (int i = 0; i < index; i++) {
 
                 current = current.getNextNode();
 
             }
 
             Node<E> temp = current.getNextNode();
-            current.setNextNode(current.getNextNode().getNextNode());
-            current = current.getNextNode();
-            current.setPreviousNode(current.getPreviousNode().getPreviousNode());
+            current.getPreviousNode().setNextNode(temp);
+            temp.setPreviousNode(current.getPreviousNode());
 
             size--;
 
-            return temp.getValue();
+            return current.getValue();
 
         }
 
@@ -155,7 +174,7 @@ public class DoublyLinkedList<E> {
 
     public E set(int index, E element) {
 
-        if(index >= size) {
+        if (index >= size) {
 
             throw new IndexOutOfBoundsException();
 
@@ -163,7 +182,7 @@ public class DoublyLinkedList<E> {
 
         Node<E> current = headNode;
 
-        for(int i = 0; i < index; i++) {
+        for (int i = 0; i < index; i++) {
 
             current = current.getNextNode();
 
@@ -178,7 +197,7 @@ public class DoublyLinkedList<E> {
 
     public String toString() {
 
-        if(size == 0) {
+        if (size == 0) {
 
             return "List is Empty";
 
@@ -187,7 +206,7 @@ public class DoublyLinkedList<E> {
         Node<E> current = headNode;
         String list = "[";
 
-        while(current.getNextNode() != null) {
+        while (current.getNextNode() != null) {
 
             list += (String) current.getValue();
             list += ", ";
