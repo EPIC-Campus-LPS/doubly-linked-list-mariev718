@@ -1,12 +1,26 @@
+/**
+ * Class to create and manipulate a doubly linked list
+ *
+ * @author Marie Viita
+ * @param <E>
+ */
 public class DoublyLinkedList<E> {
 
+    // PIVs
     private int size = 0;
     private Node<E> headNode;
     private Node<E> tailNode;
 
+    /**
+     * Gets the value of a node at a specific index
+     *
+     * @param index
+     * @return The value of the node at a specific index
+     */
     public E get(int index) {
 
-        if (index >= size) {
+        // Throws an error if the index is not in the list
+        if (index >= size || index < 0) {
 
             throw new IndexOutOfBoundsException();
 
@@ -24,6 +38,12 @@ public class DoublyLinkedList<E> {
 
     }
 
+    /**
+     * Gets the node at a specific index
+     *
+     * @param index
+     * @return Node
+     */
     public Node<E> getNode(int index) {
 
         Node<E> current = headNode;
@@ -38,12 +58,22 @@ public class DoublyLinkedList<E> {
 
     }
 
+    /**
+     * Returns the size of the list
+     *
+     * @return size
+     */
     public int getSize() {
 
         return size;
 
     }
 
+    /**
+     * Adds a node to the end of a list
+     *
+     * @param element
+     */
     public void add(E element) {
 
         if (size == 0) {
@@ -64,9 +94,16 @@ public class DoublyLinkedList<E> {
 
     }
 
+    /**
+     * Adds a node to specific index
+     *
+     * @param index the index the node should be added at
+     * @param element the value of the node
+     */
     public void add(int index, E element) {
 
-        if (index > size) {
+        // Throws an error if the index is not in the list
+        if (index > size || index < 0) {
 
             throw new IndexOutOfBoundsException();
 
@@ -112,9 +149,16 @@ public class DoublyLinkedList<E> {
 
     }
 
+    /**
+     * Removes a node from a specific index
+     *
+     * @param index the index the node is removed from
+     * @return the value of the removed node
+     */
     public E remove(int index) {
 
-        if (index >= size) {
+        // Throws an error if the index is not in the list
+        if (index >= size || index < 0) {
 
             throw new IndexOutOfBoundsException();
 
@@ -160,8 +204,14 @@ public class DoublyLinkedList<E> {
 
     }
 
+    /**
+     * Removes node at end of list
+     *
+     * @return Value of removed node
+     */
     public E remove() {
 
+        // Throws an error if there is nothing to remove
         if(size == 0) {
 
             throw new IndexOutOfBoundsException();
@@ -178,9 +228,17 @@ public class DoublyLinkedList<E> {
 
     }
 
+    /**
+     * Sets the value of a node at a specific index
+     *
+     * @param index the index at which the value of the node is set
+     * @param element the value to set the node to
+     * @return the previous value of the node
+     */
     public E set(int index, E element) {
 
-        if (index >= size) {
+        // Throws an error if the index is not in the list
+        if (index >= size || index < 0) {
 
             throw new IndexOutOfBoundsException();
 
@@ -201,6 +259,11 @@ public class DoublyLinkedList<E> {
 
     }
 
+    /**
+     * Returns a string list of the list
+     *
+     * @return String listing what's in the list
+     */
     public String toString() {
 
         if (size == 0) {
@@ -214,20 +277,17 @@ public class DoublyLinkedList<E> {
 
         while (current.getNextNode() != null) {
 
-            list += (String) current.getValue();
+            list += current.getValue();
             list += ", ";
             current = current.getNextNode();
 
         }
 
-        list += (String) current.getValue();
+        list += current.getValue();
         list += "]";
 
         return list;
 
     }
-
-    // add size method
-    // add is empty method
 
 }

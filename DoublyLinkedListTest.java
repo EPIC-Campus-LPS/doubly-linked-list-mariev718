@@ -124,9 +124,38 @@ class DoublyLinkedListTest {
 
     @Test
     void set() {
+
+        DoublyLinkedList<Integer> test6 = new DoublyLinkedList<>();
+
+        assertThrows(IndexOutOfBoundsException.class, () -> test6.set(0, 1));
+
+        test6.add(1);
+        test6.add(2);
+        test6.add(3);
+
+        test6.set(0, 5);
+
+        assertEquals(5, test6.get(0));
+
     }
 
     @Test
     void testToString() {
+
+        DoublyLinkedList<Integer> test7 = new DoublyLinkedList<>();
+
+        String expectedOutput = "List is Empty";
+
+        assertEquals(expectedOutput, test7.toString());
+
+        test7.add(1);
+        test7.add(2);
+        test7.add(3);
+        test7.add(4);
+
+        expectedOutput = "[1, 2, 3, 4]";
+
+        assertEquals(expectedOutput, test7.toString());
+
     }
 }

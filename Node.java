@@ -1,3 +1,9 @@
+/**
+ * Class to create and manipulate nodes
+ *
+ * @author Marie Viita
+ * @param <E>
+ */
 public class Node<E> {
 
     // PIVs
@@ -35,18 +41,34 @@ public class Node<E> {
 
 
     // getters
+
+    /**
+     * Gets value of node
+     *
+     * @return value of node
+     */
     public E getValue() {
 
         return value;
 
     }
 
+    /**
+     * Gets next node
+     *
+     * @return next node
+     */
     public Node<E> getNextNode() {
 
         return next;
 
     }
 
+    /**
+     * Gets previous node
+     *
+     * @return previous node
+     */
     public Node<E> getPreviousNode() {
 
         return previous;
@@ -55,18 +77,34 @@ public class Node<E> {
 
 
     // setters
+
+    /**
+     * sets value of node
+     *
+     * @param element value to be set
+     */
     public void setValue(E element) {
 
         value = element;
 
     }
 
+    /**
+     * Sets next node
+     *
+     * @param nextNode node to be pointed to
+     */
     public void setNextNode(Node<E> nextNode) {
 
         next = nextNode;
 
     }
 
+    /**
+     * Sets previous node
+     *
+     * @param lastNode node to be pointed to
+     */
     public void setPreviousNode(Node<E> lastNode) {
 
         previous = lastNode;
